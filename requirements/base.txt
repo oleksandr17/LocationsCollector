@@ -1,0 +1,13 @@
+### This is the requirements file. Please add as many apps as you need, and remember to freeze
+###  the versions of the apps once you start deploying, otherwise you'll start to face really
+###  weird bugs.
+
+# Django #
+Django
+djangorestframework
+
+# Database #
+psycopg2-binary
+
+# Timezone Support #
+pytz
