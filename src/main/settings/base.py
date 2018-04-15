@@ -79,8 +79,8 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mobile_assignment',
-        'USER': 'elements',
+        'NAME': 'locations',
+        'USER': 'locations',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
