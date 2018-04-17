@@ -8,9 +8,10 @@
 - Execute `./manage.py shell < ../initialise/create_user_and_token.py` in order to create user and token. 
 
 # TODO:
-- [ ] Setup models.
-- [ ] Implement a POST call.
-- [ ] Implement authentication and throttling.
+- [x] Setup models.
+- [x] Implement a POST call.
+- [x] Implement token authentication.
+- [ ] Implement throttling.
+- [ ] Add logging.
 - [ ] Create docker images for python app and postgres datagbase.  
 - [ ] Add documentation and postman configs.
-- [ ] Add logging.
