@@ -1,11 +1,13 @@
 from django.db import models
 import uuid
+from django.utils import timezone
 
 
-class User(models.Model):
+class Sender(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
 
 class Location(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    sender = models.ForeignKey(Sender, on_delete=models.CASCADE)
     lat = models.FloatField()
     lng = models.FloatField()
+    timestamp = models.DateTimeField(default=timezone.now)
