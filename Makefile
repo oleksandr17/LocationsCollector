@@ -34,4 +34,4 @@ clean_tox:
 	@rm -rf .pytest_cache
 	@rm -rf .tox
 	@rm -rf htmlcov
-	@rm -f .coverage
+	@rm -f src/.coverage

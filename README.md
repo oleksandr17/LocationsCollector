@@ -10,7 +10,7 @@
 - [x] Setup models.
 - [x] Implement a POST call.
 - [x] Implement throttling.
-- [ ] Add logging.
+- [x] Add logging.
 - [ ] Add unit tests.
 - [ ] Create docker images for python app and postgres datagbase. 
 - [ ] Create ansible scripts with encrypted variables.
