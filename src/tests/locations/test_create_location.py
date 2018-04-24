@@ -3,16 +3,32 @@ import json
 from django.urls import reverse
 from rest_framework import status
 from locations import models
+from locations.views import LocationList
 
+
+# Disable throttling
+
+LocationListThrottleClasses = LocationList.throttle_classes
+
+
+def setup_module(module):
+    LocationList.throttle_classes = ()
+
+
+def teardown_module(module):
+    LocationList.throttle_classes = LocationListThrottleClasses
+
+
+# Tests
 
 @pytest.mark.parametrize('sender_uuid, lat, lng', (
-    ['00000000-0000-0000-0000-000000000001', 10.111, 10.999],
-    ['00000000-0000-0000-0000-000000000002', 20.111, 20.999],
-    ['00000000-0000-0000-0000-000000000003', 30.111, 30.999],
-    ['00000000-0000-0000-0000-000000000004', 40.111, 40.999],
+    ('00000000-0000-0000-0000-000000000001', 10.111, 10.999),
+    ('00000000-0000-0000-0000-000000000002', 20.111, 20.999),
+    ('00000000-0000-0000-0000-000000000003', 30.111, 30.999),
+    ('00000000-0000-0000-0000-000000000004', 40.111, 40.999),
 ))
 @pytest.mark.django_db
-def test_location_create(client, sender_uuid, lat, lng):
+def test_location_create_success(client, sender_uuid, lat, lng):
     body = {
         "sender_uuid": sender_uuid,
         "lat": lat,
@@ -34,3 +50,24 @@ def test_location_create(client, sender_uuid, lat, lng):
     assert location.lng == lng
     assert location.sender == sender
     assert location.timestamp != None
+
+
+@pytest.mark.parametrize('sender_uuid, lat, lng', (
+    ('00000000-0000-0000-0000-000000000001', 10.111, None),
+    ('00000000-0000-0000-0000-000000000002', None, 20.999),
+    (None, 30.111, 30.999),
+))
+@pytest.mark.django_db
+def test_location_create_failure(client, sender_uuid, lat, lng):
+    body = {
+        "sender_uuid": sender_uuid,
+        "lat": lat,
+        "lng": lng
+    }
+    response = client.post(reverse('locations:location_list'),
+                                    content_type='application/json',
+                                    data=json.dumps(body))
+
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
+    assert models.Sender.objects.all().count() == 0
+    assert models.Location.objects.all().count() == 0
