@@ -1,0 +1,9 @@
+# General requirements
+-r base.txt
+
+# Testing
+pytest
+pytest-django
+pytest-flake8
+pytest-cov
+pytest-env
