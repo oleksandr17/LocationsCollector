@@ -12,7 +12,7 @@
 - [x] Implement throttling.
 - [x] Add logging.
 - [x] Add unit tests.
-- [ ] Create docker images for python app and postgres datagbase.
-- [ ] Setup web server. 
+- [ ] Setup web server.
+- [ ] Create docker images for python app and postgres datagbase. 
 - [ ] Optional: Create ansible scripts with encrypted variables.
-- [ ] Add documentation.
+- [ ] Optinal: Add documentation.
