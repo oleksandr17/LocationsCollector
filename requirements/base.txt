@@ -6,6 +6,9 @@
 Django
 djangorestframework
 
+# Web server #
+gunicorn
+
 # Database #
 psycopg2-binary
 

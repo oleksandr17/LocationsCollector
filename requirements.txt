@@ -5,6 +5,8 @@
 # Django #
 Django==2.0.4
 djangorestframework==3.8.2
+# Web server #
+gunicorn==19.8.0
 # Database #
 psycopg2-binary==2.7.4
 # Timezone Support #
