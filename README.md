@@ -13,6 +13,6 @@
 - [x] Add logging.
 - [x] Add unit tests.
 - [ ] Setup web server.
-- [ ] Create docker images for python app and postgres datagbase. 
+- [ ] Optional: Create docker images for python app and postgres datagbase. 
 - [ ] Optional: Create ansible scripts with encrypted variables.
-- [ ] Optinal: Add documentation.
+- [ ] Optional: Add documentation.
