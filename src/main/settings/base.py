@@ -151,7 +151,7 @@ LOGGING = {
         'file': {
             'class': 'logging.FileHandler',
             'level': 'INFO',
-            'filename': 'logs/default.log',
+            'filename': '../logs/django.log',
             'formatter': 'verbose',
         },
         'console': {
