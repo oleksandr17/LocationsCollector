@@ -6,20 +6,14 @@ from locations import models
 from locations.views import LocationList
 
 
-# Disable throttling
-
-LocationListThrottleClasses = LocationList.throttle_classes
-
-
-def setup_module(module):
+@pytest.fixture
+def disable_throttling():
+    throttle_classes = LocationList.throttle_classes
     LocationList.throttle_classes = ()
-
-
-def teardown_module(module):
-    LocationList.throttle_classes = LocationListThrottleClasses
-
-
-# Tests
+    try:
+        yield
+    finally:
+        LocationList.throttle_classes = throttle_classes
 
 @pytest.mark.parametrize('sender_uuid, lat, lng', (
     ('00000000-0000-0000-0000-000000000001', 10.111, 10.999),
@@ -28,7 +22,7 @@ def teardown_module(module):
     ('00000000-0000-0000-0000-000000000004', 40.111, 40.999),
 ))
 @pytest.mark.django_db
-def test_location_create_success(client, sender_uuid, lat, lng):
+def test_location_create_success(client, disable_throttling, sender_uuid, lat, lng):
     body = {
         "sender_uuid": sender_uuid,
         "lat": lat,
@@ -58,7 +52,7 @@ def test_location_create_success(client, sender_uuid, lat, lng):
     (None, 30.111, 30.999),
 ))
 @pytest.mark.django_db
-def test_location_create_failure(client, sender_uuid, lat, lng):
+def test_location_create_failure(client, disable_throttling, sender_uuid, lat, lng):
     body = {
         "sender_uuid": sender_uuid,
         "lat": lat,
