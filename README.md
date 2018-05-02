@@ -8,8 +8,11 @@ Setup project:
 - Setup postgres database (reference - https://tutorial-extensions.djangogirls.org/en/optional_postgresql_installation/). Check project settings for reference.
 - Execute `pyenv local` in order to switch to a proper python version.
 - Execute `make install_versioned_deps` in order to create a virtual environment.
-- Execute `. venv/bin/activate` in order to switch to virtual environment.
-- Execute `./manage.py migrate` in order to migrate database.   
+- Execute `. venv/bin/activate` in order to activate virtual environment.
+- Execute `./manage.py migrate` in order to migrate database.
+
+Start project:
+- Execute `gunicorn -c gunicorn.conf.py wsgi` in order to launch gunicorn.
 
 
 # TODO:
@@ -18,7 +21,7 @@ Setup project:
 - [x] Implement throttling.
 - [x] Add logging.
 - [x] Add unit tests.
-- [ ] Setup web server.
+- [ ] Setup web server (nginx and gunicorn).
 - [ ] Optional: Create docker images for python app and postgres datagbase. 
 - [ ] Optional: Create ansible scripts with encrypted variables.
 - [ ] Optional: Add documentation.
