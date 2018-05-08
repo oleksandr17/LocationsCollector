@@ -39,3 +39,6 @@ clean_tox:
 	@rm -rf .tox
 	@rm -rf src/htmlcov
 	@rm -f  src/.coverage
+
+#docker-compose -f docker/docker-compose.yml build
+#docker-compose -f docker/docker-compose.yml up

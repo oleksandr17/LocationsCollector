@@ -5,6 +5,7 @@
 # Django #
 Django
 djangorestframework
+django-environ
 
 # Web server #
 gunicorn

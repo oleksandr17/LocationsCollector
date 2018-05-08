@@ -1,0 +1,32 @@
+version: '2'
+
+volumes:
+  postgres_data: {}
+
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    environment:
+      - DATABASE_URL=postgres://user7:ok12h3iuhkshdgf@postgres/location_collector
+      - ALLOWED_HOSTS=*
+      - DEBUG=true
+    depends_on:
+      - postgres
+
+  nginx:
+    build:
+        context: ../
+        dockerfile: docker/Dockerfile-nginx
+    ports:
+      - 0.0.0.0:8000:80
+
+  postgres:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user7
+      - POSTGRES_PASSWORD=ok12h3iuhkshdgf
+      - POSTGRES_DB=location_collector

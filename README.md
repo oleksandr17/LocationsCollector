@@ -16,12 +16,16 @@ Start project:
 
 
 # TODO:
+v1:
 - [x] Setup models.
 - [x] Implement a POST call.
 - [x] Implement throttling.
 - [x] Add logging.
 - [x] Add unit tests.
-- [ ] Setup web server (nginx and gunicorn).
-- [ ] Optional: Create docker images for python app and postgres datagbase. 
-- [ ] Optional: Create ansible scripts with encrypted variables.
-- [ ] Optional: Add documentation.
+- [x] Setup web server (nginx and gunicorn).
+- [x] Create docker images for python app and postgres datagbase.
+
+v2:
+- [ ] Create ansible scripts with encrypted variables.
+- [ ] Setup SSL in nginx. 
+- [ ] Add documentation.
