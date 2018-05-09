@@ -21,11 +21,7 @@ Start project:
 - [x] Implement throttling.
 - [x] Add logging to console.
 - [x] Add unit tests.
-- [x] Setup docker images for nginx, app and postgres.
-- [ ] Setup ansible with encrypted variables.
+- [x] Setup docker images.
+- [ ] Setup ansible, encrypted variables, use variables in docker files.
 - [ ] Setup SSL for nginx.
 - [ ] Add documentation.
-
-- docker tox 
-- docfile for development (no nginx), add volume to restart server automatically
-- pass vars from ansible to docker-compose (ENV variable could be a good option)
