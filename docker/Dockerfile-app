@@ -1,7 +1,8 @@
-FROM python:3.5.5-jessie
+FROM python:3.6.5-jessie
 
 ADD src /app/src/
 ADD requirements.txt /app/
+ADD Makefile /app/
 ADD docker/wait-for.sh /app/
 
 RUN pip install -r /app/requirements.txt

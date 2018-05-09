@@ -3,3 +3,6 @@
   synchronize:
     src: .
     dest: "{{ source_code_path }}"
+
+- name: Docker compose
+  command: make docker_compose

@@ -29,8 +29,7 @@ freeze_requirements: clean_venv install_unversioned_deps
 
 # Misc
 pytest_clean:
-	rm -rfd __pycache__
-	#find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+	find . | grep -E "__pycache__" | xargs rm -rf
 
 # Tox
 $(TOX): $(PIP)

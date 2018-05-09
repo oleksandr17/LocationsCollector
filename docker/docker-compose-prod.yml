@@ -20,7 +20,7 @@ services:
     environment:
       - DATABASE_URL=postgres://user7:ok12h3iuhkshdgf@postgres/location_collector
       - ALLOWED_HOSTS=*
-      - DEBUG=true
+      - DEBUG=false
     depends_on:
       - postgres
     command: >-

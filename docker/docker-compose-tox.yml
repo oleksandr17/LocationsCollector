@@ -1,0 +1,33 @@
+version: '2'
+
+volumes:
+  postgres_data: {}
+
+services:
+
+  app:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile-tox
+    environment:
+      - DATABASE_URL=postgres://user:password@postgres/database
+      - ALLOWED_HOSTS=*
+      - DEBUG=true
+    depends_on:
+      - postgres
+    ports:
+      - 0.0.0.0:8000:8000
+    command: >-
+      /bin/bash -c "
+      /app/wait-for.sh postgres:5432 --timeout=2 &&
+      cd /app/src/ &&
+      tox"
+
+  postgres:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=database

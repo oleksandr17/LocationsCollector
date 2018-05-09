@@ -1,0 +1,9 @@
+FROM python:3.6.5-jessie
+
+ADD src /app/src/
+ADD requirements /app/requirements
+ADD tox.ini /app/
+ADD Makefile /app/
+ADD docker/wait-for.sh /app/
+
+RUN pip install tox
