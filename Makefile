@@ -5,14 +5,14 @@ pytest_clean:
 	find . | grep -E "__pycache__" | xargs rm -rf
 
 docker_prod: pytest_clean
-	docker-compose -f docker/docker-compose-prod.yml up --build --force-recreate
+	docker-compose -f docker/prod/docker-compose.yml up --build --force-recreate
 
 docker_dev: pytest_clean
-	docker-compose -f docker/docker-compose-dev.yml up --build --force-recreate
+	docker-compose -f docker/dev/docker-compose.yml up --build --force-recreate
 
 docker_tox: pytest_clean
-	docker-compose -f docker/docker-compose-dev.yml -p tests build
-	docker-compose -f docker/docker-compose-dev.yml -p tests run app /bin/bash -c "pip install tox && cd /app && tox"
+	docker-compose -f docker/dev/docker-compose.yml -p tests build
+	docker-compose -f docker/dev/docker-compose.yml -p tests run app /bin/bash -c "pip install tox && cd /app && tox"
 
 # Ansible
 ansible:

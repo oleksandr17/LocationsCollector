@@ -7,8 +7,8 @@ services:
 
   nginx:
     build:
-      context: ../
-      dockerfile: docker/Dockerfile-nginx
+      context: ../..
+      dockerfile: ../Dockerfile-nginx
     ports:
       - 0.0.0.0:8000:80
     depends_on:
@@ -16,8 +16,8 @@ services:
 
   app:
     build:
-      context: ../
-      dockerfile: docker/Dockerfile-app
+      context: ../..
+      dockerfile: ../Dockerfile-app
     environment:
       - DATABASE_URL=postgres://user7:ok12h3iuhkshdgf@postgres/location_collector
       - ALLOWED_HOSTS=*

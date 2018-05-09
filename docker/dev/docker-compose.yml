@@ -7,8 +7,8 @@ services:
 
   app:
     build:
-      context: ../
-      dockerfile: docker/Dockerfile-app
+      context: ../..
+      dockerfile: ../Dockerfile-app
     environment:
       - DATABASE_URL=postgres://usertest:passwordtest@postgres/databasetest
       - ALLOWED_HOSTS=*
