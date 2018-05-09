@@ -1,0 +1,36 @@
+version: '2'
+
+volumes:
+  postgres_data_dev: {}
+
+services:
+
+  app:
+    build:
+      context: ../..
+      dockerfile: docker/Dockerfile-app
+    environment:
+      - DATABASE_URL=postgres://usertest:passwordtest@postgres/databasetest
+      - ALLOWED_HOSTS=*
+      - DEBUG=true
+    depends_on:
+      - postgres
+    volumes:
+      - ../../src:/app/src
+    ports:
+      - 0.0.0.0:8000:8000
+    command: >-
+      /bin/bash -c "
+      /app/wait-for.sh postgres:5432 --timeout=60 &&
+      cd /app/src/ &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+
+  postgres:
+    image: postgres:latest
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=usertest
+      - POSTGRES_PASSWORD=passwordtest
+      - POSTGRES_DB=databasetest

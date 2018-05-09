@@ -1,40 +1,25 @@
-.PHONY: clean_venv install_unversioned_deps install_test_deps install_versioned_deps freeze_requirements clean_tox tox
-UNVERSIONED_DEPS=requirements/base.txt
-TEST_DEPS=requirements/test.txt
-VERSIONED_DEPS=requirements.txt
-PIP=venv/bin/pip
-TOX=venv/bin/tox
+.PHONY: pytest_clean docker_prod docker_dev docker_tox ansible tox_clean
 
-# Virtual env
-clean_venv:
-	@rm -rf venv
+# Docker
+pytest_clean:
+	find . | grep -E "__pycache__" | xargs rm -rf
 
-$(PIP):
-	python -m venv venv
-	$(PIP) install -U pip
+docker_prod: pytest_clean
+	docker-compose -f docker/prod/docker-compose.yml up --build --force-recreate
 
-# Install dependencies
-install_unversioned_deps: $(PIP)
-	$(PIP) install -r $(UNVERSIONED_DEPS)
+docker_dev: pytest_clean
+	docker-compose -f docker/dev/docker-compose.yml up --build --force-recreate
 
-install_test_deps: $(PIP)
-	$(PIP) install -r $(TEST_DEPS)
+docker_tox: pytest_clean
+	docker-compose -f docker/dev/docker-compose.yml -p tests build
+	docker-compose -f docker/dev/docker-compose.yml -p tests run app /bin/bash -c "pip install tox && cd /app && tox"
 
-install_versioned_deps: $(PIP)
-	$(PIP) install -r $(VERSIONED_DEPS)
-
-# Freeze dependencies
-freeze_requirements: clean_venv install_unversioned_deps
-	$(PIP) freeze -r $(UNVERSIONED_DEPS) > $(VERSIONED_DEPS)
+# Ansible
+ansible:
+	cd ansible && echo "$ANSIBLE_VAULT_PROD" | ansible-playbook locations_collector.yml -t deploy -i inventory/locations_collector -b --ask-vault-pass
 
 # Tox
-$(TOX): $(PIP)
-	$(PIP) install tox
-
-tox: $(TOX)
-	$(TOX) ${ARGS}
-
-clean_tox:
+tox_clean:
 	@rm -rf .pytest_cache
 	@rm -rf .tox
 	@rm -rf src/htmlcov

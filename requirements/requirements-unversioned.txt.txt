@@ -5,6 +5,10 @@
 # Django #
 Django
 djangorestframework
+django-environ
+
+# Web server #
+gunicorn
 
 # Database #
 psycopg2-binary

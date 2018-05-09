@@ -1,0 +1,10 @@
+- name: Deploy application, nginx and postgres
+  become_user: "{{ default_user }}"
+  become: yes
+  hosts: location_collection
+  vars_files:
+   - vars/secrets.yml
+  roles:
+    - deploy
+  tags:
+    - deploy

@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import datetime
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#o&%_pzkr2n8-!om))fbj)s#$akw9q%yqr!zalc4)jzv$(0s1v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=False)
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost'])
 
 # Application definition
 
@@ -75,14 +79,7 @@ WSGI_APPLICATION = 'wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'locations',
-        'USER': 'locations',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+    'default': env.db('DATABASE_URL', default='postgres://locations@localhost/location'),
 }
 
 
@@ -148,12 +145,6 @@ LOGGING = {
         },
     },
     'handlers': {
-        'file': {
-            'class': 'logging.FileHandler',
-            'level': 'INFO',
-            'filename': 'logs/default.log',
-            'formatter': 'verbose',
-        },
         'console': {
             'class': 'logging.StreamHandler',
             'level': 'DEBUG',
@@ -162,7 +153,7 @@ LOGGING = {
     },
     'loggers': {
         'locations': {
-            'handlers': ['file', 'console'],
+            'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': True,
         },
