@@ -4,23 +4,31 @@ volumes:
   postgres_data: {}
 
 services:
+  nginx:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile-nginx
+    ports:
+      - 0.0.0.0:8000:80
+    depends_on:
+      - app
+
   app:
     build:
       context: ../
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/Dockerfile-app
     environment:
       - DATABASE_URL=postgres://user7:ok12h3iuhkshdgf@postgres/location_collector
       - ALLOWED_HOSTS=*
       - DEBUG=true
     depends_on:
       - postgres
-
-  nginx:
-    build:
-        context: ../
-        dockerfile: docker/Dockerfile-nginx
-    ports:
-      - 0.0.0.0:8000:80
+    command: >-
+      /bin/bash -c "
+      /app/wait-for.sh postgres:5432 --timeout=2 &&
+      cd /app/src/ &&
+      python manage.py migrate &&
+      gunicorn -c gunicorn.conf.py wsgi"
 
   postgres:
     image: postgres:latest

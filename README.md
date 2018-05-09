@@ -16,16 +16,16 @@ Start project:
 
 
 # TODO:
-v1:
 - [x] Setup models.
 - [x] Implement a POST call.
 - [x] Implement throttling.
-- [x] Add logging.
+- [x] Add logging to console.
 - [x] Add unit tests.
-- [x] Setup web server (nginx and gunicorn).
-- [x] Create docker images for python app and postgres datagbase.
-
-v2:
-- [ ] Create ansible scripts with encrypted variables.
-- [ ] Setup SSL in nginx. 
+- [x] Setup docker images for nginx, app and postgres.
+- [ ] Setup ansible with encrypted variables.
+- [ ] Setup SSL for nginx.
 - [ ] Add documentation.
+
+- docker tox 
+- docfile for development (no nginx), add volume to restart server automatically
+- pass vars from ansible to docker-compose (ENV variable could be a good option)

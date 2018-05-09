@@ -1,0 +1,5 @@
+---
+- name: Copy source code
+  synchronize:
+    src: .
+    dest: "{{ source_code_path }}"
