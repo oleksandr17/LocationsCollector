@@ -4,6 +4,7 @@ volumes:
   postgres_data_prod: {}
 
 services:
+
   nginx:
     build:
       context: ../

@@ -6,4 +6,4 @@ ADD Makefile /app/
 ADD tox.ini /app/
 ADD docker/wait-for.sh /app/
 
-RUN pip install -r /app/requirements/requirements.txt
+RUN pip install -r /app/requirements/requirements-versioned.txt
