@@ -23,5 +23,6 @@ Start project:
 - [x] Add unit tests.
 - [x] Setup docker images.
 - [ ] Setup ansible, encrypted variables, use variables in docker files.
+- [ ] Hide secret key from settings.
 - [ ] Setup SSL for nginx.
 - [ ] Add documentation.
