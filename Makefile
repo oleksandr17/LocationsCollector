@@ -27,4 +27,4 @@ docker_tests: pytest_clean
 
 # Ansible
 ansible:
-	cd ansible && echo "$ANSIBLE_VAULT_PROD" | ansible-playbook locations_collector.yml -t deploy -i inventory/locations_collector -b --ask-vault-pass
+	cd ansible && ansible-playbook locations_collector.yml -t deploy -i inventory/locations_collection -b --ask-vault-pass

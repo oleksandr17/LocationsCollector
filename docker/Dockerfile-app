@@ -1,9 +1,11 @@
 FROM python:3.6.5-jessie
 
 ADD src /app/src/
-ADD requirements /app/requirements/
 ADD Makefile /app/
 ADD tox.ini /app/
-ADD docker/wait-for.sh /app/
 
+ADD docker/wait-for.sh /app/
+RUN chmod +x /app/wait-for.sh
+
+ADD requirements /app/requirements/
 RUN pip install -r /app/requirements/requirements-versioned.txt
