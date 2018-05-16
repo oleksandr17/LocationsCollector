@@ -22,4 +22,5 @@ urlpatterns = [
     #path('v1/token-auth/', views.obtain_auth_token),
 
     path('v1/locations/', include('locations.urls')),
+    path('v1/ping/', include('ping.urls')),
 ]
