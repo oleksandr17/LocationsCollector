@@ -1,2 +1,0 @@
-[location_collection]
-127.0.0.1 ansible_user={{ default_user }}

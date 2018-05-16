@@ -1,8 +1,16 @@
 ---
 - name: Copy source code
   synchronize:
-    src: .
+    src: "{{ lookup('env','PWD') }}/"
     dest: "{{ source_code_path }}"
 
 - name: Docker compose
-  command: make docker_compose
+  environment:
+    - DATABASE_URL: "postgres://{{postgres_user}}:{{postgres_password}}@postgres/{{postgres_db}}"
+    - SECRET_KEY: "{{secret_key}}"
+    - POSTGRES_USER: "{{postgres_user}}"
+    - POSTGRES_PASSWORD: "{{postgres_password}}"
+    - POSTGRES_DB: "{{postgres_db}}"
+  shell: |
+    cd {{ source_code_path }}
+    docker-compose -f docker/prod/docker-compose.yml up --build --force-recreate

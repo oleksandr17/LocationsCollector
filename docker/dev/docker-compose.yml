@@ -10,7 +10,8 @@ services:
       context: ../..
       dockerfile: docker/Dockerfile-app
     environment:
-      - DATABASE_URL=postgres://usertest:passwordtest@postgres/databasetest
+      - DATABASE_URL=postgres://user_test:password_test@postgres/database_test
+      - SECRET_KEY=verysecret
       - ALLOWED_HOSTS=*
       - DEBUG=true
     depends_on:
@@ -31,6 +32,6 @@ services:
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=usertest
-      - POSTGRES_PASSWORD=passwordtest
-      - POSTGRES_DB=databasetest
+      - POSTGRES_USER=user_test
+      - POSTGRES_PASSWORD=password_test
+      - POSTGRES_DB=database_test

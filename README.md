@@ -1,18 +1,17 @@
-# Preparation steps (will be split between docker and ansible):
-Setup machine:
-- Install nginx - execute `brew install nginx`.
-- Install PostgreSQL (reference - https://www.postgresql.org/download/macosx/).
-- Install `pyenv` (reference - https://github.com/pyenv/pyenv#installation).
+# Configure local machine:
+- Install docker.
+- Install docker compose.
+- Install ansible in case you want to deploy project on remote machine. It could be also necessary to install python. 
 
-Setup project:
-- Setup postgres database (reference - https://tutorial-extensions.djangogirls.org/en/optional_postgresql_installation/). Check project settings for reference.
-- Execute `pyenv local` in order to switch to a proper python version.
-- Execute `make install_versioned_deps` in order to create a virtual environment.
-- Execute `. venv/bin/activate` in order to activate virtual environment.
-- Execute `./manage.py migrate` in order to migrate database.
+# Configure remote machine:
+- Install python (required for ansible).
+- Install docker.
+- Install docker compose.
 
-Start project:
-- Execute `gunicorn -c gunicorn.conf.py wsgi` in order to launch gunicorn.
+# How to:
+- Execute `make prod` in order to deploy project on remote machine.
+- Execute `make dev` in order to deploy project on local machine. Directory `postman` contains ready to use configuration.
+- Execute `make tests` in order to run tests locally.
 
 
 # TODO:
@@ -22,7 +21,8 @@ Start project:
 - [x] Add logging to console.
 - [x] Add unit tests.
 - [x] Setup docker images.
-- [ ] Setup ansible, encrypted variables, use variables in docker files.
-- [ ] Hide secret key from settings.
+- [x] Setup ansible, encrypt variables, pass variables to docker.
+- [ ] Add ping.
+- [ ] Add admin.
 - [ ] Setup SSL for nginx.
 - [ ] Add documentation.

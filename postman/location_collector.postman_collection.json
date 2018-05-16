@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "476e9381-f835-425f-8d45-3b5e2643d78b",
+		"name": "location_collector",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"sender_uuid\": \"48a229d6-e400-466c-a467-9018c80a9572\",\n  \"lat\": 52.366431,\n  \"lng\": 5.4321\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/v1/locations/list/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"locations",
+						"list",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
