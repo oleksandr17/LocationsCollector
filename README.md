@@ -22,7 +22,8 @@
 - [x] Add unit tests.
 - [x] Setup docker images.
 - [x] Setup ansible, encrypt variables, pass variables to docker.
-- [x] Add ping.
-- [ ] Add admin.
+- [x] Implement ping call.
+- [x] Add postman configuration.
+- [x] Add admin.
 - [ ] Setup SSL for nginx.
 - [ ] Add documentation.
