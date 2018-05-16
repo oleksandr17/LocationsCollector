@@ -10,7 +10,7 @@
 
 # How to:
 - Execute `make prod` in order to deploy project on remote machine.
-- Execute `make dev` in order to deploy project on local machine.
+- Execute `make dev` in order to deploy project on local machine. Directory `postman` contains ready to use configuration.
 - Execute `make tests` in order to run tests locally.
 
 
