@@ -22,3 +22,12 @@ tox_clean:
 	@rm -rf .tox
 	@rm -rf src/htmlcov
 	@rm -f  src/.coverage
+
+# Virtual env
+venv_clean:
+	@rm -rf venv
+
+venv_create: venv_clean
+	python -m venv venv
+	venv/bin/pip install -U pip
+	venv/bin/pip install -r requirements/requirements-versioned.txt
