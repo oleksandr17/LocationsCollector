@@ -9,9 +9,9 @@
 - Install docker compose.
 
 # How to:
-- Execute `make docker_dev` in order to deploy project on local machine.
-- Execute `make docker_tests` in order to run tests locally.
-- Execute `make ansible_prod` in order to deploy project on remote machine.
+- Execute `make prod` in order to deploy project on remote machine.
+- Execute `make dev` in order to deploy project on local machine.
+- Execute `make tests` in order to run tests locally.
 
 
 # TODO:
@@ -21,7 +21,8 @@
 - [x] Add logging to console.
 - [x] Add unit tests.
 - [x] Setup docker images.
-- [x] Setup ansible, encrypted variables, use variables in docker files.
+- [x] Setup ansible, encrypt variables, pass variables to docker.
 - [ ] Add ping.
+- [ ] Add admin.
 - [ ] Setup SSL for nginx.
 - [ ] Add documentation.
