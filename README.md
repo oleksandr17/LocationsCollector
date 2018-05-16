@@ -10,7 +10,7 @@
 
 # How to:
 - Execute `make prod` in order to deploy project on remote machine.
-- Execute `make dev` in order to deploy project on local machine. Directory `postman` contains ready to use configuration.
+- Execute `make dev` in order to deploy project on local machine. Directory `postman` contains ready to use configuration. Also execute `make venv_clean` in order to create a virtual environment. It simplifies development processs, e.g. it does autocompletion.
 - Execute `make tests` in order to run tests locally.
 
 
@@ -22,7 +22,7 @@
 - [x] Add unit tests.
 - [x] Setup docker images.
 - [x] Setup ansible, encrypt variables, pass variables to docker.
-- [ ] Add ping.
+- [x] Add ping.
 - [ ] Add admin.
 - [ ] Setup SSL for nginx.
 - [ ] Add documentation.
