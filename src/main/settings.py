@@ -13,14 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import environ
 
-# Define the project (src) root
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.dirname(PROJECT_ROOT)
-
-# Get the environment variables from the .env file
 env = environ.Env()
-if env.bool('READ_ENVFILE', default=True):
-    env.read_env(os.path.join(PROJECT_ROOT, '.env'))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -86,7 +79,7 @@ WSGI_APPLICATION = 'wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://locations@localhost/location'),
+    'default': env.db('DATABASE_URL', default=''),
 }
 
 
