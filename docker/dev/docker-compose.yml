@@ -12,7 +12,6 @@ services:
     environment:
       - DATABASE_URL=postgres://user_test:password_test@postgres/database_test
       - SECRET_KEY=verysecret
-      - ALLOWED_HOSTS=*
       - DEBUG=true
     depends_on:
       - postgres
