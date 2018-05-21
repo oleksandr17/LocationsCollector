@@ -48,5 +48,6 @@
 - [x] Implement ping call.
 - [x] Add postman configuration.
 - [x] Add admin.
+- [ ] Fix assets of admin environment.
 - [ ] Setup SSL for nginx.
 - [ ] Add documentation.
