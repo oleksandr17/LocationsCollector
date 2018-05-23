@@ -156,3 +156,6 @@ LOGGING = {
         },
     },
 }
+
+# Static
+STATIC_ROOT = '/var/www/locations_collector/static/'

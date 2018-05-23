@@ -48,7 +48,7 @@
 - [x] Implement ping call.
 - [x] Add postman configuration.
 - [x] Add admin.
-- [ ] Fix assets of admin environment.
+- [x] Fix static files.
 - [ ] Setup SSL for nginx.
 - [ ] Assign domain name to IP.
 - [ ] Add documentation.
