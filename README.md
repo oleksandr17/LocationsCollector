@@ -50,5 +50,5 @@
 - [x] Add admin.
 - [x] Fix static files.
 - [x] Assign domain name to IP.
-- [ ] Setup SSL for nginx.
+- [X] Setup SSL for nginx.
 - [ ] Add documentation.
