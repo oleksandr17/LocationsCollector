@@ -1,4 +1,4 @@
-# Dockerized solution test
+# Dockerized solution
 
 #### Configure local machine:
 - Install docker.
