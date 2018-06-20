@@ -53,3 +53,7 @@
 - [x] Assign domain name to IP.
 - [X] Setup SSL for nginx.
 - [ ] Add documentation.
+- [ ] Log every API call (in non debug mode).
+- [ ] Add `scan` end point. 
+- [ ] Get access to volume's content.
+- [ ] Improve ansible script, make sure it quits once docker command is finished.
