@@ -39,7 +39,8 @@
 
 # TODO:
 - [x] Setup models.
-- [x] Implement a POST call.
+- [x] Post location.
+- [x] Get all location.
 - [x] Implement throttling.
 - [x] Add logging to console.
 - [x] Add unit tests.

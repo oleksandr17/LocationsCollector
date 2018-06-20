@@ -20,3 +20,8 @@ class PostLocationSerializer(serializers.Serializer):
         logger.info("Created new location: {}".format(location))
 
         return location
+
+class LocationSerializer(serializers.Serializer):
+
+    def to_representation(self, obj):
+        return "lat="+str(obj.lat)+", lng="+str(obj.lng)
