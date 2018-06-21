@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "create",
+			"name": "location_list.post",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -39,7 +39,40 @@
 			"response": []
 		},
 		{
-			"name": "ping",
+			"name": "location_list.get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"sender_uuid\": \"48a229d6-e400-466c-a467-9018c80a9572\",\n  \"lat\": 52.366431,\n  \"lng\": 5.4321\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/v1/locations/list/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"locations",
+						"list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ping.get",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -59,6 +92,32 @@
 					"path": [
 						"v1",
 						"ping",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scan.get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/scan/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"scan",
 						""
 					]
 				}
