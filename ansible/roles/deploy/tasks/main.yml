@@ -14,4 +14,4 @@
     - NGINX_CERT_PASSWORD: "{{nginx_cert_password}}"
   shell: |
     cd {{ source_code_path }}
-    docker-compose -f docker/prod/docker-compose.yml up --build --force-recreate
+    docker-compose -f docker/prod/docker-compose.yml up --build --force-recreate -d
