@@ -30,7 +30,6 @@ src/.cache
 src/.tox
 src/Deploy_.egg-info
 builds/
-static/
 ansible/external_roles
 
 # Vim swap files.

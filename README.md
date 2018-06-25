@@ -39,7 +39,8 @@
 
 # TODO:
 - [x] Setup models.
-- [x] Implement a POST call.
+- [x] Post location.
+- [x] Get all location.
 - [x] Implement throttling.
 - [x] Add logging to console.
 - [x] Add unit tests.
@@ -51,4 +52,7 @@
 - [x] Fix static files.
 - [x] Assign domain name to IP.
 - [X] Setup SSL for nginx.
+- [x] Add `scan` end point. 
+- [ ] Log every API call (in non debug mode).
+- [ ] Improve ansible script, make sure it quits once docker command is finished.
 - [ ] Add documentation.
