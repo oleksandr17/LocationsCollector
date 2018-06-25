@@ -1,3 +1,7 @@
 FROM nginx:1.13.12-alpine
 
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY docker/nginx_priv.enc /var/www/locations_collector/certificate/nginx_priv.enc
+COPY docker/nginx_pub.enc /var/www/locations_collector/certificate/nginx_pub.enc
+
+RUN apk add --no-cache openssl

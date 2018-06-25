@@ -12,7 +12,7 @@
 
 #### How to:
 - Execute `make prod` in order to deploy project on remote machine. The ansible-vault's password is required.
-- Execute `make dev` in order to deploy project on local machine. Also execute `make venv_create` in order to create a virtual environment. It simplifies development processs, e.g. it adds autocompletion to IDE.
+- Execute `make dev` in order to deploy project on local machine. Also execute `make venv_create` in order to create a virtual environment. It simplifies development process, e.g. it adds autocompletion to IDE.
 - Execute `make tests` in order to run tests locally.
 - Directory `postman` contains ready to use configuration. This configuration could be used as documentation.
 
@@ -49,6 +49,6 @@
 - [x] Add postman configuration.
 - [x] Add admin.
 - [x] Fix static files.
-- [ ] Setup SSL for nginx.
-- [ ] Assign domain name to IP.
+- [x] Assign domain name to IP.
+- [X] Setup SSL for nginx.
 - [ ] Add documentation.
