@@ -54,5 +54,4 @@
 - [X] Setup SSL for nginx.
 - [x] Add `scan` end point. 
 - [ ] Log every API call (in non debug mode).
-- [ ] Improve ansible script, make sure it quits once docker command is finished.
 - [ ] Add documentation.
