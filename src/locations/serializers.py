@@ -16,7 +16,7 @@ class PostLocationSerializer(serializers.Serializer):
             logger.info("Created new sender: {}".format(sender))
 
         # Location
-        location = models.Location.objects.create(sender = sender, lat=validated_data['lat'], lng=validated_data['lng'])
+        location = models.Location.objects.create(sender=sender, lat=validated_data['lat'], lng=validated_data['lng'])
         logger.info("Created new location: {}".format(location))
 
         return location
