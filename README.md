@@ -36,6 +36,10 @@
 - Execute `gunicorn -c gunicorn.conf.py wsgi` in order to launch gunicorn.
 
 
+#### Frontend
+
+In order to run frontend you need to build it first. For instructions follow frontend/README.md
+
 
 # TODO:
 - [x] Setup models.
@@ -55,3 +59,5 @@
 - [x] Add `scan` end point. 
 - [ ] Log every API call (in non debug mode).
 - [ ] Add documentation.
+
+
