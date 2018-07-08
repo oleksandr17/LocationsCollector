@@ -17,6 +17,7 @@ services:
     restart: always
     volumes:
       - static_files_prod:/var/www/locations_collector/static/
+      - /root/locations_collector/frontend/build:/var/www/locations_collector/frontend/
     command: >-
       /bin/sh -c "
       openssl des -d -in /var/www/locations_collector/certificate/nginx_priv.enc -out /var/www/locations_collector/certificate/nginx_priv -pass pass:${NGINX_CERT_PASSWORD} &&
