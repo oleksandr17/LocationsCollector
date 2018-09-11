@@ -1,19 +1,21 @@
-import pytest
 import json
+
 from django.urls import reverse
 from rest_framework import status
+
+import pytest
 from locations import models
-from locations.views import LocationList
+from locations.views import LocationListView
 
 
 @pytest.fixture
 def disable_throttling():
-    throttle_classes = LocationList.throttle_classes
-    LocationList.throttle_classes = ()
+    throttle_classes = LocationListView.throttle_classes
+    LocationListView.throttle_classes = ()
     try:
         yield
     finally:
-        LocationList.throttle_classes = throttle_classes
+        LocationListView.throttle_classes = throttle_classes
 
 @pytest.mark.parametrize('sender_uuid, lat, lng', (
     ('00000000-0000-0000-0000-000000000001', 10.111, 10.999),

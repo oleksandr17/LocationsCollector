@@ -58,6 +58,10 @@ In order to run frontend you need to build it first. For instructions follow fro
 - [X] Setup SSL for nginx.
 - [x] Add `scan` end point. 
 - [ ] Log every API call (in non debug mode).
+- [ ] Add Reddis.
+- [ ] Add celery.
+- [ ] Update unit tests: create view models, use more features of pytest.
+- [ ] Refactor url configs.
 - [ ] Add documentation.
 
 

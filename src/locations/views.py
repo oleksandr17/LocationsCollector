@@ -1,10 +1,12 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from django.views.generic.base import TemplateView
 from rest_framework import status
-from . import serializers, models
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from . import models, serializers
 
 
-class LocationList(APIView):
+class LocationListView(APIView):
 
     def get(self, request, *args, **kwargs):
         serializer = serializers.LocationSerializer(models.Location.objects.all(), many=True)
@@ -16,3 +18,11 @@ class LocationList(APIView):
             serializer.save()
             return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class LocationsMapView(TemplateView):
+    template_name = 'locations/index.html'
+
+    def get_context_data(self, **kwargs):
+        return {'locations': models.Location.objects.all()}
