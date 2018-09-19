@@ -1,27 +1,17 @@
-.PHONY: pytest_clean prod dev tests tox tox_clean
+.PHONY: pycache_clean prod dev tests tox tox_clean
 
-pytest_clean:
-	find . | grep -E "__pycache__" | xargs rm -rf
+pycache_clean:
+	find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete
 
-prod: pytest_clean
+prod: pycache_clean
 	ansible-playbook ansible/locations_collector.yml -t deploy -i ansible/inventory/locations_collection -b --ask-vault-pass
 
-dev: pytest_clean
+dev: pycache_clean
 	docker-compose -f docker/dev/docker-compose.yml up --build --force-recreate
 
-tests: pytest_clean
+tests: pycache_clean
 	docker-compose -f docker/dev/docker-compose.yml -p tests build
 	docker-compose -f docker/dev/docker-compose.yml -p tests run app /bin/bash -c "pip install tox && cd /app && tox"
-
-# Tox
-tox: pytest_clean
-	tox
-
-tox_clean:
-	@rm -rf .pytest_cache
-	@rm -rf .tox
-	@rm -rf src/htmlcov
-	@rm -f  src/.coverage
 
 # Virtual env
 venv_clean:
