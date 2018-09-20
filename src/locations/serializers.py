@@ -1,6 +1,12 @@
+
+import logging
+
 from rest_framework import serializers
+
 from . import models
-from . import logger
+
+logger = logging.getLogger(__name__)
+
 
 class PostLocationSerializer(serializers.Serializer):
     sender_uuid = serializers.UUIDField()
@@ -13,12 +19,11 @@ class PostLocationSerializer(serializers.Serializer):
             sender = models.Sender.objects.get(uuid=validated_data['sender_uuid'])
         except models.Sender.DoesNotExist:
             sender = models.Sender.objects.create(uuid=validated_data['sender_uuid'])
-            logger.info("Created new sender: {}".format(sender))
+            logger.info("Create new sender: {}".format(sender))
 
         # Location
         location = models.Location.objects.create(sender=sender, lat=validated_data['lat'], lng=validated_data['lng'])
-        logger.info("Created new location: {}".format(location))
-
+        logger.info("Create new location: {}".format(location))
         return location
 
 class LocationSerializer(serializers.Serializer):

@@ -1,3 +1,5 @@
+import logging
+
 from django.views.generic.base import TemplateView
 from rest_framework import status
 from rest_framework.response import Response
@@ -5,18 +7,22 @@ from rest_framework.views import APIView
 
 from . import models, serializers
 
+logger = logging.getLogger(__name__)
 
 class LocationListView(APIView):
 
     def get(self, request, *args, **kwargs):
         serializer = serializers.LocationSerializer(models.Location.objects.all(), many=True)
+        logger.info('{}: {}'.format(request._request, serializer.data))
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
         serializer = serializers.PostLocationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            logger.info('{}: {}'.format(request._request, serializer.validated_data))
             return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
+        logger.error('{}: {}'.format(request._request, serializer.errors))
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

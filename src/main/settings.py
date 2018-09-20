@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+
 import environ
 
 env = environ.Env()
@@ -137,6 +138,12 @@ LOGGING = {
         },
     },
     'handlers': {
+        # 'file': {
+        #     'class': 'logging.FileHandler',
+        #     'level': 'DEBUG',
+        #     'filename': '../logs/default.log',  # make sure file exists
+        #     'formatter': 'verbose',
+        # },
         'console': {
             'class': 'logging.StreamHandler',
             'level': 'DEBUG',
@@ -147,13 +154,16 @@ LOGGING = {
         'locations': {
             'handlers': ['console'],
             'level': 'DEBUG',
-            'propagate': True,
+            'propagate': False,
+        },
+        'ping': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
         },
     },
 }
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
+# Static files (CSS, JavaScript, Images) - https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/locations_collector/static/'
