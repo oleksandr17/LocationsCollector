@@ -30,7 +30,7 @@ def test_location_create_success(client, disable_throttling, sender_uuid, lat, l
         "lat": lat,
         "lng": lng
     }
-    response = client.post(reverse('locations:location_list'),
+    response = client.post(reverse('v1:locations:location_list'),
                                     content_type='application/json',
                                     data=json.dumps(body))
 
@@ -60,7 +60,7 @@ def test_location_create_failure(client, disable_throttling, sender_uuid, lat, l
         "lat": lat,
         "lng": lng
     }
-    response = client.post(reverse('locations:location_list'),
+    response = client.post(reverse('v1: locations:location_list'),
                                     content_type='application/json',
                                     data=json.dumps(body))
 

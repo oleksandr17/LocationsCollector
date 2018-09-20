@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from rest_framework.authtoken import views
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-
+apps_patterns = [
     #path('v1/token-auth/', views.obtain_auth_token),
-    path('v1/locations/', include('locations.urls')),
-    path('v1/ping/', include('ping.urls')),
+    path('locations/', include(('locations.urls', 'locations'))),
+    path('ping/', include(('ping.urls', 'ping'))),
+]
 
-    path('scan/', include('scan.urls'))
+urlpatterns = [
+    path('v1/', include((apps_patterns, 'v1'))),
+    path('scan/', include('scan.urls')),
+    path('admin/', admin.site.urls),
 ] + static('/frontend/', document_root='../frontend/build')

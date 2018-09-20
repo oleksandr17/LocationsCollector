@@ -59,7 +59,6 @@ In order to run frontend you need to build it first. For instructions follow fro
 - [x] Add `scan` end point. 
 - [x] Log every API call (in non debug mode).
 - [ ] Update unit tests: create view models, use more features of pytest.
-- [ ] Refactor url configs.
 - [ ] Add Reddis.
 - [ ] Schedule tasks.
 - [ ] Add documentation (https://docs.python-guide.org/writing/documentation/)
