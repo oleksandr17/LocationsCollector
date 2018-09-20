@@ -20,6 +20,8 @@ services:
       - ../../frontend:/app/frontend
     ports:
       - 0.0.0.0:8000:8000
+    stdin_open: true
+    tty: true
     command: >-
       /bin/bash -c "
       /app/wait-for.sh postgres:5432 --timeout=60 &&
